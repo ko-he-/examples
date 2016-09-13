@@ -66,6 +66,6 @@ end
 
 
 Then(/^pingで疎通成功$/) do
-  step %(the file "log/ping.log" should contain "0%")
+  step %(the file "log/ping.log" should contain "4 received, 0% packet loss")
 end
 
