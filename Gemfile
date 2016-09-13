@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'aruba', require: false
 gem 'cucumber', require: false
 
-gem 'net_tester', github: 'yasuhito/net_tester', branch: 'develop'
+gem 'net_tester', github: 'net-tester/net-tester', branch: 'develop'
 gem 'rake'
 gem 'rubocop'
 gem 'factory_girl'
