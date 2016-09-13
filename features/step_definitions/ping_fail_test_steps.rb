@@ -1,4 +1,4 @@
-When(/^適当なところににFahey Inc 社のPCからpingで疎通確認$/) do
+When(/^適当なところにFahey Inc 社のPCからpingで疎通確認$/) do
   cd('.') do
     expect(lambda { @internal_pc.exec 'ping 8.8.8.9 -c 4 > log/ping.log' }).to raise_error(RuntimeError)
   end
