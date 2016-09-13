@@ -42,4 +42,67 @@ FactoryGirl.define do
     virtual_port_number 2
     physical_port_number 2
   end
+
+  factory :internal_pc, class: NetTester::Netns do
+    name 'internal_pc'
+    internal_network_host
+
+    ip_address '10.10.10.3'
+    virtual_port_number 2
+    physical_port_number 2
+  end
+
+  trait :dmz_network do
+    netmask '255.255.255.0'
+    gateway '10.10.0.1'
+    mac_address Faker::Internet.mac_address('00')
+  end
+
+  factory :dns_server, class: NetTester::Netns do
+    name 'dns_server'
+    dmz_network
+    ip_address '10.10.0.10'
+    virtual_port_number 3
+    physical_port_number 3
+  end
+
+  factory :vpn_server, class: NetTester::Netns do
+    name 'vpn_server'
+    dmz_network
+    ip_address '10.10.0.11'
+    virtual_port_number 3
+    physical_port_number 3
+  end
+
+  factory :dmz_server, class: NetTester::Netns do
+    name 'dmz_server'
+    dmz_network
+    ip_address '10.10.0.100'
+    virtual_port_number 3
+    physical_port_number 3
+  end
+
+  trait :internet_network do
+    netmask '255.255.255.0'
+    gateway '198.51.100.254'
+    mac_address Faker::Internet.mac_address('00')
+  end
+
+  factory :internet_pc, class: NetTester::Netns do
+    name 'internet_pc'
+    internet_network
+
+    ip_address '198.51.100.1'
+    virtual_port_number 4
+    physical_port_number 4
+  end
+
+  factory :emmerich_pc, class: NetTester::Netns do
+    name 'emmerich_pc'
+    internet_network
+
+    ip_address '198.51.100.94'
+    virtual_port_number 4
+    physical_port_number 4
+  end
 end
