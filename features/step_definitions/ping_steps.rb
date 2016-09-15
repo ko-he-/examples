@@ -3,14 +3,14 @@
 When(/^DNSサーバにFahey社PCからpingで疎通確認$/) do
   system "sudo ovs-ofctl add-flow test_0xdad1c001 dl_dst=ff:ff:ff:ff:ff:ff,actions=output:FLOOD"
   cd('.') do
-    @internal_pc.exec 'ping 10.10.0.10 -c 4 > log/ping.log'
+    @internal_pc.exec "ping #{@dns_server.ip_address} -c 4 > log/ping.log"
   end
 end
 
 When(/^Fahey Inc 社内部のクライアントにDMZからpingで疎通確認$/) do
   system "sudo ovs-ofctl add-flow test_0xdad1c001 dl_dst=ff:ff:ff:ff:ff:ff,actions=output:FLOOD"
   cd('.') do
-    @dmz_server.exec 'ping 10.10.10.3 -c 4 > log/ping.log'
+    @dmz_server.exec "ping #{@internal_pc.ip_address} -c 4 > log/ping.log"
   end
 end
 
@@ -31,7 +31,7 @@ end
 When(/^DMZにFahey Inc 社のPCからpingで疎通確認$/) do
   system "sudo ovs-ofctl add-flow test_0xdad1c001 dl_dst=ff:ff:ff:ff:ff:ff,actions=output:FLOOD"
   cd('.') do
-    @internal_pc.exec 'ping 10.10.0.100 -c 4 > log/ping.log'
+    @internal_pc.exec "ping #{@dmz_server.ip_address} -c 4 > log/ping.log"
   end
 end
 
