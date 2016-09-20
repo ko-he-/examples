@@ -89,6 +89,26 @@ When(/^Fahey Inc 社からDNSサーバへ問い合わせ$/) do
   end
 end
 
+When(/^Fahey Inc 社内部のDNSサーバから上位のDNSサーバへ問い合わせ$/) do
+  run "sudo ip netns exec #{@internet_pc.name} bash -c 'echo OK | nc -l 53 &'"
+  run "sudo ip netns exec #{@internet_pc.name} bash -c 'echo OK | nc -lu 53 &'"
+
+  cd('.') do
+    @dns_server.exec "nc 198.51.100.1 53 > log/nc_53.log"
+    @dns_server.exec "nc -uv -w4 198.51.100.1 53 > log/nc_udp_53.log"
+  end
+end
+
+When(/^DMZからDNSサーバへの問い合わせ$/) do
+  run "sudo ip netns exec #{@dns_server.name} bash -c 'echo OK | nc -l 53 &'"
+  run "sudo ip netns exec #{@dns_server.name} bash -c 'echo OK | nc -lu 53 &'"
+
+  cd('.') do
+    @dmz_server.exec "nc 10.10.0.10 53 > log/nc_53.log"
+    @dmz_server.exec "nc -uv -w4 10.10.0.10 53 > log/nc_udp_53.log"
+  end
+end
+
 Then(/^問い合わせ成功$/) do
   step %(the file "log/nc_53.log" should contain "OK")
   step %(the file "log/nc_udp_53.log" should contain "OK")
