@@ -49,6 +49,18 @@ When(/^Fahey Inc 社からDNSサーバへsshを実行$/) do
   end
 end
 
+When(/^Fahey Inc 社からSSLVPNサーバへsshを実行$/) do
+  run "sudo ip netns exec #{@vpn_server.name} bash -c 'echo OK | nc -l 22 &'"
+  run "sudo ip netns exec #{@vpn_server.name} bash -c 'echo OK | nc -l 80 &'"
+  run "sudo ip netns exec #{@vpn_server.name} bash -c 'echo OK | nc -l 443 &'"
+
+  cd('.') do
+    @internal_pc.exec "nc 10.10.0.11 22 > log/nc_22.log"
+    @internal_pc.exec "nc 10.10.0.11 80 > log/nc_80.log"
+    @internal_pc.exec "nc 10.10.0.11 443 > log/nc_443.log"
+  end
+end
+
 Then(/^ssh成功$/) do
   step %(the file "log/nc_22.log" should contain "OK")
   step %(the file "log/nc_80.log" should contain "OK")
