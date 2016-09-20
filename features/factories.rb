@@ -34,6 +34,15 @@ FactoryGirl.define do
     physical_port_number 10
   end
 
+  factory :test_server, class: Netns do
+    internal_network_host
+
+    name 'test_server'
+    ip_address '10.10.10.2'
+    virtual_port_number 10
+    physical_port_number 10
+  end
+
   factory :browser_pc, class: Netns do
     internal_network_host
 

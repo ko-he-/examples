@@ -34,5 +34,8 @@ Given(/^資産管理サーバ$/) do
   @asset_server = Netns.new(attributes_for(:git_server))
 end
 
+Given(/^テスト環境サーバ$/) do
+  @test_server = Netns.new(attributes_for(:test_server))
+end
 
 
