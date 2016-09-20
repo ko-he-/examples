@@ -13,3 +13,20 @@ Then(/^SSLVPN成功$/) do
   step %(the file "log/nc_443.log" should contain "OK")
 end
 
+When(/^Fahey Inc 社から資産管理サーバへsshを実行$/) do
+  run "sudo ip netns exec #{@asset_server.name} bash -c 'echo OK | nc -l 22 &'"
+  run "sudo ip netns exec #{@asset_server.name} bash -c 'echo OK | nc -l 80 &'"
+  run "sudo ip netns exec #{@asset_server.name} bash -c 'echo OK | nc -l 443 &'"
+
+  cd('.') do
+    @internal_pc.exec "nc 10.10.10.1 22 > log/nc_22.log"
+    @internal_pc.exec "nc 10.10.10.1 80 > log/nc_80.log"
+    @internal_pc.exec "nc 10.10.10.1 443 > log/nc_443.log"
+  end
+end
+
+Then(/^ssh成功$/) do
+  step %(the file "log/nc_22.log" should contain "OK")
+  step %(the file "log/nc_80.log" should contain "OK")
+  step %(the file "log/nc_443.log" should contain "OK")
+end

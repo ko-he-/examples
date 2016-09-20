@@ -30,3 +30,9 @@ Given(/^Google Public DNS$/) do
   system "sudo ip netns exec internet_pc iptables -t nat -A POSTROUTING -j SNAT --to-source 8.8.8.8"
 end
 
+Given(/^資産管理サーバ$/) do
+  @asset_server = Netns.new(attributes_for(:git_server))
+end
+
+
+
