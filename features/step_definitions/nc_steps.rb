@@ -100,7 +100,6 @@ When(/^Fahey Inc 社内部のDNSサーバから上位のDNSサーバへ問い合
 end
 
 When(/^DMZからDNSサーバへの問い合わせ$/) do
-  system "sudo ovs-ofctl add-flow test_0xdad1c001 dl_dst=ff:ff:ff:ff:ff:ff,actions=output:FLOOD"
   run "sudo ip netns exec #{@dns_server.name} bash -c 'echo OK | nc -l 53 &'"
   run "sudo ip netns exec #{@dns_server.name} bash -c 'echo OK | nc -lu 53 &'"
 
