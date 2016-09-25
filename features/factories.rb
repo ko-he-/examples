@@ -64,7 +64,7 @@ FactoryGirl.define do
   trait :dmz_network do
     netmask '255.255.255.0'
     gateway '10.10.0.1'
-    mac_address Faker::Internet.mac_address('00')
+    mac_address { Faker::Internet.mac_address('00') }
   end
 
   factory :dns_server, class: NetTester::Netns do
@@ -94,7 +94,7 @@ FactoryGirl.define do
   trait :internet_network do
     netmask '255.255.255.0'
     gateway '198.51.100.254'
-    mac_address Faker::Internet.mac_address('00')
+    mac_address { Faker::Internet.mac_address('00') } 
   end
 
   factory :internet_pc, class: NetTester::Netns do
@@ -113,5 +113,14 @@ FactoryGirl.define do
     ip_address '198.51.100.94'
     virtual_port_number 2
     physical_port_number 2
+  end
+
+  factory :google_pc, class: Netns do
+    internal_network_host
+
+    name 'google_pc'
+    ip_address '10.10.10.4'
+    virtual_port_number 3
+    physical_port_number 3
   end
 end

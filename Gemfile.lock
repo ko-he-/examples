@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/net-tester/net-tester.git
-  revision: 84ed5b2280cadffb041dcaed460675b73e2cd314
+  revision: 8ffd2a2242050adae7c41594454829c2fa626fa7
   branch: develop
   specs:
     net_tester (0.2.0)
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/trema/phut.git
-  revision: f43a8c4e94eeb18c83e1535e81adbc860df12b75
+  revision: 4a7502f8de2d06356b5309dbf9da56b653c69480
   branch: develop
   specs:
     phut (0.7.7)
@@ -20,8 +20,18 @@ GIT
       pry (~> 0.10.3)
 
 GIT
+  remote: git://github.com/trema/pio.git
+  revision: e29c289d9abfdeeb64eeb6ea0223b2a96252719e
+  branch: develop
+  specs:
+    pio (0.30.0)
+      activesupport (~> 4.2, >= 4.2.4)
+      bindata (~> 2.1.0)
+      bundler (>= 1.11.2, < 2.0)
+
+GIT
   remote: git://github.com/trema/trema.git
-  revision: 8d8858dff055e33efc68c3038119924a810c02c4
+  revision: 03482228e72843bd59b6aa15e25b8ecc35c2e4f4
   branch: develop
   specs:
     trema (0.10.1)
@@ -80,9 +90,6 @@ GEM
     multi_test (0.1.2)
     parser (2.3.1.0)
       ast (~> 2.2)
-    pio (0.30.0)
-      activesupport (~> 4.2, >= 4.2.4)
-      bindata (~> 2.1.0)
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -117,6 +124,7 @@ DEPENDENCIES
   factory_girl
   net_tester!
   phut!
+  pio!
   rake
   rubocop
   trema!

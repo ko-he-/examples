@@ -9,8 +9,9 @@ gem 'rake'
 gem 'rubocop'
 gem 'factory_girl'
 
-# phut と trema は本来 NetTester の依存関係で自動的にインストールされるものだけど、
+# phut, pio と trema は本来 NetTester の依存関係で自動的にインストールされるものだけど、
 # NetTester が開発版を使っている関係で、この Gemfile にも追加が必要。
-# net_tester.gemspec に phut と trema が入れば、下の 2 行は消してよし。
+# net-tester.gemspec に phut, pio と trema が入れば、下の 3 行は消してよし。
+gem 'pio', github: 'trema/pio', branch: 'develop'
 gem 'phut', github: 'trema/phut', branch: 'develop'
 gem 'trema', github: 'trema/trema', branch: 'develop'
