@@ -4,7 +4,7 @@ Feature: DMZからDMZ内のDNSサーバへの問い合わせ
   DMZからDNSサーバへの問い合わせできることを確認したい
   なぜならメンテナンス業務に必要だから
 
-  Scenario: ヨーヨーダイン社からDNSサーバへ問い合わせ
+  Scenario: DMZからDNSサーバへ問い合わせ
     Given ヨーヨーダイン社のDMZ内部のサーバ
     And ヨーヨーダイン社のDMZ内のDNSサーバ
     When ヨーヨーダイン社のDMZからヨーヨーダイン社のDMZ内のDNSサーバへの問い合わせ
