@@ -28,6 +28,12 @@ When(/^FirewallにInternet上のPCからpingで疎通確認$/) do
   end
 end
 
+When(/^Google Public DNSサーバにヨーヨーダイン社のPCからpingで疎通確認$/) do
+  cd('.') do
+    @internal_pc.exec 'ping 8.8.8.8 -c 4 > log/ping.log'
+  end
+end
+
 Then(/^pingで疎通成功$/) do
   step %(the file "log/ping.log" should contain "4 received, 0% packet loss")
 end

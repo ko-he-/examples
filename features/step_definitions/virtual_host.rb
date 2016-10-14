@@ -25,3 +25,10 @@ end
 Given(/^Internet上のPC$/) do
   @internet_pc = Netns.new(attributes_for(:internet_pc))
 end
+
+Given(/^Google Public DNSサーバ$/) do
+  @google_dns = Netns.new(attributes_for(:internet_pc))
+  system "sudo ip netns exec internet_pc sudo ip netns exec internet_pc ping 198.51.100.254 -c 1 >/dev/null"
+  system "sudo ip netns exec internet_pc iptables -t nat -A PREROUTING -j DNAT --to-destination 198.51.100.1"
+  system "sudo ip netns exec internet_pc iptables -t nat -A POSTROUTING -j SNAT --to-source 8.8.8.8"
+end
