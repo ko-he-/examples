@@ -10,6 +10,7 @@
 * [sshで社内からテスト環境サーバへログイン](https://github.com/net-tester/examples/blob/develop/features/ssh_test_environment_server_from_internal_network.feature)
 * [sshで社内からDMZのDNSサーバへログイン](https://github.com/net-tester/examples/blob/develop/features/)
 * [sshで社内からDMZ内のサーバへログイン](https://github.com/net-tester/examples/blob/develop/features/ssh_dmz_from_internal_network.feature)
+* [sshとWebUIで社内からDMZのSSLVPNサーバへログイン](https://github.com/net-tester/examples/blob/develop/features/ssh_web_dmz_vpn_from_internal_network.feature)
 * [pingでインターネットからルータへの疎通確認](https://github.com/net-tester/examples/blob/develop/features/ping_router_from_internet.feature)
 * [pingでインターネットからファイアウォールへの疎通確認](https://github.com/net-tester/examples/blob/develop/features/ping_firewall_from_internet.feature)
 * [DMZ内のDNSサーバにDMZ内から問い合わせを行う](https://github.com/net-tester/examples/blob/develop/features/query_dmz_dns_from_dmz.feature)
