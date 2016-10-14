@@ -14,3 +14,4 @@
 * [pingでインターネットからルータへの疎通確認](https://github.com/net-tester/examples/blob/develop/features/ping_router_from_internet.feature)
 * [pingでインターネットからファイアウォールへの疎通確認](https://github.com/net-tester/examples/blob/develop/features/ping_firewall_from_internet.feature)
 * [DMZ内のDNSサーバにDMZ内から問い合わせを行う](https://github.com/net-tester/examples/blob/develop/features/query_dmz_dns_from_dmz.feature)
+* [pingで社内からインターネットへ疎通確認](https://github.com/net-tester/examples/blob/develop/features/ping_internet_from_internal_network.feature)
