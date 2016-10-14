@@ -18,6 +18,10 @@ Given(/^ヨーヨーダイン社のDMZ内部のサーバ$/) do
   @dmz_server = Netns.new(attributes_for(:dmz_server))
 end
 
+Given(/^ヨーヨーダイン社のDMZ内のSSLVPNサーバ$/) do
+  @vpn_server = Netns.new(attributes_for(:vpn_server))
+end
+
 Given(/^Internet上のPC$/) do
   @internet_pc = Netns.new(attributes_for(:internet_pc))
 end

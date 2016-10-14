@@ -100,6 +100,16 @@ FactoryGirl.define do
     mac_address {'00:00:00:00:00:08'}
   end
 
+  factory :vpn_server, class: NetTester::Netns do
+    name 'vpn_server'
+    dmz_network
+
+    ip_address '10.10.0.11'
+    virtual_port_number 5
+    physical_port_number 5
+    mac_address {'00:00:00:00:00:09'}
+  end
+
   trait :internet_network do
     netmask '255.255.255.0'
     gateway '198.51.100.254'
